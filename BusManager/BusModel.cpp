@@ -1,5 +1,12 @@
 #include "BusModel.h"
 
+BusModel::BusModel()
+{
+	_busNumber = "";
+	_routeNumber = "";
+	_driver = "";
+}
+
 BusModel::BusModel(std::string busNumber, std::string routeNumber, std::string driver)
 {
 	_busNumber = busNumber;

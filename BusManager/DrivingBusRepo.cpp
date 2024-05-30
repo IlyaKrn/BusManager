@@ -25,7 +25,7 @@ void DrivingBusRepo::save(BusModel bus)
 	list<BusModel>::iterator it;
 	for (it = buses.begin(); it != buses.end(); ++it) {
 		if (it->getBusNumber() == bus.getBusNumber())
-			throw string("driving bus with this number not exists");
+			throw string("driving bus with this number is exists");
 	}
 	buses.push_back(bus);
 	ofstream output("driving_buses.txt");

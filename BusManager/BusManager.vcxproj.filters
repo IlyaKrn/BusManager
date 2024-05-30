@@ -9,10 +9,6 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="Файлы ресурсов">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
     <Filter Include="Файлы заголовков\repos">
       <UniqueIdentifier>{79549dee-8ba7-43cc-bf24-1bc4732a7b26}</UniqueIdentifier>
     </Filter>
@@ -31,6 +27,22 @@
     <Filter Include="Исходные файлы\utils">
       <UniqueIdentifier>{cef00fc5-7a27-4098-8003-b6d5bb955607}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы заголовков\list">
+      <UniqueIdentifier>{3ca69b52-1bba-4692-aa4e-c0950ffeb5e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\list">
+      <UniqueIdentifier>{81d22ae7-de29-47aa-adfc-9db814197c47}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы ресурсов">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Файлы заголовков\logic">
+      <UniqueIdentifier>{be274c52-6aaf-4126-8d8d-47e0aaf6c324}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\logic">
+      <UniqueIdentifier>{804db90f-93ae-4811-a398-7a02878d848e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BusManager.cpp">
@@ -48,6 +60,12 @@
     <ClCompile Include="Utils.cpp">
       <Filter>Исходные файлы\utils</Filter>
     </ClCompile>
+    <ClCompile Include="BusList.cpp">
+      <Filter>Исходные файлы\list</Filter>
+    </ClCompile>
+    <ClCompile Include="Manager.cpp">
+      <Filter>Исходные файлы\logic</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StateBusRepo.h">
@@ -61,6 +79,12 @@
     </ClInclude>
     <ClInclude Include="Utils.h">
       <Filter>Файлы заголовков\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="BusList.h">
+      <Filter>Файлы заголовков\list</Filter>
+    </ClInclude>
+    <ClInclude Include="Manager.h">
+      <Filter>Файлы заголовков\logic</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

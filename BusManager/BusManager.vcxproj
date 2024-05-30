@@ -127,15 +127,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BusList.cpp" />
     <ClCompile Include="BusManager.cpp" />
     <ClCompile Include="BusModel.cpp" />
     <ClCompile Include="DrivingBusRepo.cpp" />
+    <ClCompile Include="Manager.cpp" />
     <ClCompile Include="StateBusRepo.cpp" />
     <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BusList.h" />
     <ClInclude Include="BusModel.h" />
     <ClInclude Include="DrivingBusRepo.h" />
+    <ClInclude Include="Manager.h" />
     <ClInclude Include="StateBusRepo.h" />
     <ClInclude Include="Utils.h" />
   </ItemGroup>

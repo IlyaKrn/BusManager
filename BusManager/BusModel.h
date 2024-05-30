@@ -9,6 +9,7 @@ private:
 	std::string _driver;
 
 public:
+	BusModel();
 	BusModel(std::string busNumber, std::string routeNumber, std::string driver);
 
 	std::string getBusNumber();
