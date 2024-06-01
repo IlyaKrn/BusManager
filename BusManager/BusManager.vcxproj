@@ -102,12 +102,15 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>SFML_DYNAMIC;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\IlyaKrn\source\repos\BusManager\libs\SFML-2.6.1\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\Users\IlyaKrn\source\repos\BusManager\libs\SFML-2.6.1\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-audio-d.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -127,21 +130,41 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AddBusWindow.cpp" />
     <ClCompile Include="BusList.cpp" />
     <ClCompile Include="BusManager.cpp" />
     <ClCompile Include="BusModel.cpp" />
+    <ClCompile Include="Button.cpp" />
     <ClCompile Include="DrivingBusRepo.cpp" />
+    <ClCompile Include="MainWindow.cpp" />
     <ClCompile Include="Manager.cpp" />
+    <ClCompile Include="RadioButtonList.cpp" />
+    <ClCompile Include="ScrollableList.cpp" />
+    <ClCompile Include="SendBusWindow.cpp" />
     <ClCompile Include="StateBusRepo.cpp" />
+    <ClCompile Include="TextInput.cpp" />
     <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AddBusWindow.h" />
     <ClInclude Include="BusList.h" />
     <ClInclude Include="BusModel.h" />
+    <ClInclude Include="Button.h" />
     <ClInclude Include="DrivingBusRepo.h" />
+    <ClInclude Include="MainWindow.h" />
     <ClInclude Include="Manager.h" />
+    <ClInclude Include="RadioButtonList.h" />
+    <ClInclude Include="ScrollableList.h" />
+    <ClInclude Include="SendBusWindow.h" />
     <ClInclude Include="StateBusRepo.h" />
+    <ClInclude Include="TextInput.h" />
     <ClInclude Include="Utils.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Texture\buttonTexture.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Fonts\Arial.ttf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

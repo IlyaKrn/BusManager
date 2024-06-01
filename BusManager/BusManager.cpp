@@ -1,12 +1,13 @@
 ﻿#include <iostream>
-#include"Manager.h"
+#include"MainWindow.h"
 
 using namespace std;
 
 int main()
 {
 	try {
-		Manager m();
+		MainWindow window;
+		window.show();
 	}
 	catch (string e) {
 		cout << e << endl;
