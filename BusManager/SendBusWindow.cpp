@@ -30,26 +30,26 @@ void SendBusWindow::show()
                         if (validateData()) {
                             //Твой код
 
-                            using convert_type = codecvt_utf8<wchar_t>;
-                            wstring_convert<convert_type, wchar_t> converter;
+                            try {
+                                using convert_type = codecvt_utf8<wchar_t>;
+                                wstring_convert<convert_type, wchar_t> converter;
 
-                            string busNumber = converter.to_bytes(numberBusTextInput.getText());
-
-
-
+                                string busNumber = converter.to_bytes(numberBusTextInput.getText());
 
 
-                            if (!(busNumber.length() == 6 &&
-                                regex_match(string(1, busNumber[0]), regex("([A-Z])")) &&
-                                regex_match(string(1, busNumber[1]), regex("([0-9])")) &&
-                                regex_match(string(1, busNumber[2]), regex("([0-9])")) &&
-                                regex_match(string(1, busNumber[3]), regex("([0-9])")) &&
-                                regex_match(string(1, busNumber[4]), regex("([A-Z])")) &&
-                                regex_match(string(1, busNumber[5]), regex("([A-Z])")))) {
-                                MessageBox(NULL, L"Неверно указан номер автобуса", L"Ошибка", MB_ICONERROR | MB_OK);
-                            }
-                            else {
-                                try {
+
+
+
+                                if (!(busNumber.length() == 6 &&
+                                    regex_match(string(1, busNumber[0]), regex("([A-Z])")) &&
+                                    regex_match(string(1, busNumber[1]), regex("([0-9])")) &&
+                                    regex_match(string(1, busNumber[2]), regex("([0-9])")) &&
+                                    regex_match(string(1, busNumber[3]), regex("([0-9])")) &&
+                                    regex_match(string(1, busNumber[4]), regex("([A-Z])")) &&
+                                    regex_match(string(1, busNumber[5]), regex("([A-Z])")))) {
+                                    MessageBox(NULL, L"Неверно указан номер автобуса", L"Ошибка", MB_ICONERROR | MB_OK);
+                                }
+                                else {
                                     Manager m = Manager();
                                     switch (locationRadioButtonList.getSelectedIndex()) {
                                     case 0:
@@ -64,11 +64,15 @@ void SendBusWindow::show()
                                         break;
                                     }
                                 }
-                                catch (string s) {
-                                    wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
-                                    wstring wide = converter.from_bytes(s);
-                                    MessageBox(NULL, wide.c_str(), L"Ошибка", MB_ICONERROR | MB_OK);
-                                }
+                            }
+                            catch (string s) {
+                                wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
+                                wstring wide = converter.from_bytes(s);
+                                MessageBox(NULL, wide.c_str(), L"Ошибка", MB_ICONERROR | MB_OK);
+                            }
+
+                            catch (...) {
+                                MessageBox(NULL, L"Возможно введены неверные данные", L"Ошибка", MB_ICONERROR | MB_OK);
                             }
                         }
                     }

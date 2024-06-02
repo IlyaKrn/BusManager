@@ -35,44 +35,45 @@ void AddBusWindow::show()
                     if (addBusButton.isClicked(sf::Mouse::getPosition(window))) {
                         if (validateData()) {
                             //Твой код
-                            using convert_type = codecvt_utf8<wchar_t>;
-                            wstring_convert<convert_type, wchar_t> converter;
 
-                            string busNumber = converter.to_bytes(numberBusTextInput.getText());
-                            string routeNumber = converter.to_bytes(numberRouteTextInput.getText());
-                            string driver = converter.to_bytes(driverTextInput.getText());
-                            string parentBusNumber = converter.to_bytes(numberNextPrevTextInput.getText());
+                            try {
+                                using convert_type = codecvt_utf8<wchar_t>;
+                                wstring_convert<convert_type, wchar_t> converter;
 
-                            cout << driver.substr(driver.find(" "), driver.length()) << endl;
-                            if (!(busNumber.length() == 6 &&
-                                regex_match(string(1, busNumber[0]), regex("([A-Z])")) &&
-                                regex_match(string(1, busNumber[1]), regex("([0-9])")) &&
-                                regex_match(string(1, busNumber[2]), regex("([0-9])")) &&
-                                regex_match(string(1, busNumber[3]), regex("([0-9])")) &&
-                                regex_match(string(1, busNumber[4]), regex("([A-Z])")) &&
-                                regex_match(string(1, busNumber[5]), regex("([A-Z])")))) {
-                                MessageBox(NULL, L"Неверно указан номер автобуса", L"Ошибка", MB_ICONERROR | MB_OK);
-                            }
-                            else if (!(routeNumber.length() == 3 &&
-                                regex_match(string(1, routeNumber[0]), regex("([A-Z])")) &&
-                                regex_match(string(1, routeNumber[1]), regex("([0-9])")) &&
-                                regex_match(string(1, routeNumber[2]), regex("([0-9])")))) {
-                                MessageBox(NULL, L"Неверно указан номер маршрута", L"Ошибка", MB_ICONERROR | MB_OK);
-                            }
-                            else if (!(
-                                driver.find(" ") != -1 &&
-                                driver.substr(driver.find(" "), driver.length()).length() == 4 &&
-                                string(1, driver.substr(driver.find(" "), driver.length())[0]) == " " &&
-                                regex_match(string(1, driver.substr(driver.find(" "), driver.length())[1]), regex("([A-Z])")) &&
-                                string(1, driver.substr(driver.find(" "), driver.length())[2]) == " " &&
-                                regex_match(string(1, driver.substr(driver.find(" "), driver.length())[3]), regex("([A-Z])"))
+                                string busNumber = converter.to_bytes(numberBusTextInput.getText());
+                                string routeNumber = converter.to_bytes(numberRouteTextInput.getText());
+                                string driver = converter.to_bytes(driverTextInput.getText());
+                                string parentBusNumber = converter.to_bytes(numberNextPrevTextInput.getText());
+
+                                cout << driver.substr(driver.find(" "), driver.length()) << endl;
+                                if (!(busNumber.length() == 6 &&
+                                    regex_match(string(1, busNumber[0]), regex("([A-Z])")) &&
+                                    regex_match(string(1, busNumber[1]), regex("([0-9])")) &&
+                                    regex_match(string(1, busNumber[2]), regex("([0-9])")) &&
+                                    regex_match(string(1, busNumber[3]), regex("([0-9])")) &&
+                                    regex_match(string(1, busNumber[4]), regex("([A-Z])")) &&
+                                    regex_match(string(1, busNumber[5]), regex("([A-Z])")))) {
+                                    MessageBox(NULL, L"Неверно указан номер автобуса", L"Ошибка", MB_ICONERROR | MB_OK);
+                                }
+                                else if (!(routeNumber.length() == 3 &&
+                                    regex_match(string(1, routeNumber[0]), regex("([A-Z])")) &&
+                                    regex_match(string(1, routeNumber[1]), regex("([0-9])")) &&
+                                    regex_match(string(1, routeNumber[2]), regex("([0-9])")))) {
+                                    MessageBox(NULL, L"Неверно указан номер маршрута", L"Ошибка", MB_ICONERROR | MB_OK);
+                                }
+                                else if (!(
+                                    driver.find(" ") != -1 &&
+                                    driver.substr(driver.find(" "), driver.length()).length() == 4 &&
+                                    string(1, driver.substr(driver.find(" "), driver.length())[0]) == " " &&
+                                    regex_match(string(1, driver.substr(driver.find(" "), driver.length())[1]), regex("([A-Z])")) &&
+                                    string(1, driver.substr(driver.find(" "), driver.length())[2]) == " " &&
+                                    regex_match(string(1, driver.substr(driver.find(" "), driver.length())[3]), regex("([A-Z])"))
                                 
                                 
-                                )) {
-                                MessageBox(NULL, L"Неверно указаны данные водителя", L"Ошибка", MB_ICONERROR | MB_OK);
-                            }
-                            else {
-                                try {
+                                    )) {
+                                    MessageBox(NULL, L"Неверно указаны данные водителя", L"Ошибка", MB_ICONERROR | MB_OK);
+                                }
+                                else {
                                     Manager m = Manager();
                                     BusModel b = BusModel(busNumber, routeNumber, driver);
                                     switch(locationRadioButtonList.getSelectedIndex()) {
@@ -118,11 +119,15 @@ void AddBusWindow::show()
                                         break;
                                     }
                                 }
-                                catch (string s) {
-                                    wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
-                                    wstring wide = converter.from_bytes(s);
-                                    MessageBox(NULL, wide.c_str(), L"Ошибка", MB_ICONERROR | MB_OK);
-                                }
+                            }
+                            catch (string s) {
+                                wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
+                                wstring wide = converter.from_bytes(s);
+                                MessageBox(NULL, wide.c_str(), L"Ошибка", MB_ICONERROR | MB_OK);
+                            }
+
+                            catch (...) {
+                                MessageBox(NULL, L"Возможно введены неверные данные", L"Ошибка", MB_ICONERROR | MB_OK);
                             }
                         }
                     }
